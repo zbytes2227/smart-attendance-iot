@@ -16,7 +16,7 @@ const handler = async (req, res) => {
 
       await newCard.save();
       console.log("okay");
-      return res.json({ success: true, msg: "New Card Added Successfuly.." });
+      return res.status(200).json({ success: true, msg: "New Card Added Successfuly.." });
     } catch (err) {
       console.error(err);
       res
