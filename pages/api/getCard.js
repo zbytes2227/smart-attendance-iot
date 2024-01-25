@@ -2,18 +2,18 @@ import Cards from "@/model/Cards";
 import connectDb from "../../middleware/mongoose";
 
 const handler = async (req, res) => {
-  if (req.method === "GET") {
+  if (req.method === "POST") {
     try {
       // Get the 'id' parameter from the request query
-      const { id } = req.query;
+   
 
       // Check if id is provided
-      if (!id) {
+      if (!req.body.cardID) {
         return res.status(400).json({ success: false, msg: "Missing 'id' parameter" });
       }
 
       // Find the card details by cardID
-      const reqCard = await Cards.findOne({ cardID: id });
+      const reqCard = await Cards.findOne({ cardID: req.body.cardID });
 
       // Check if the card is found
       if (!reqCard) {
