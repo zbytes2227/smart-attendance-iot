@@ -17,10 +17,10 @@ const handler = async (req, res) => {
 
       // Check if the card is found
       if (!reqCard) {
-        return res.status(404).json({ success: false, msg: "Card not found" });
+        return res.status(200).json({ success: false, msg: "UnAuthorised Card", status: 109 });
       }
 
-      return res.json({ success: true, card_details: reqCard });
+      return res.json({ success: true, card_details: reqCard, status: 105 });
     } catch (err) {
       console.error(err);
       res.status(500).json({ success: false, msg: "Server error...." });
