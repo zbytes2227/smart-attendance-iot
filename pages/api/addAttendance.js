@@ -9,9 +9,9 @@ const formatDate = (date) => {
     hour: 'numeric',
     minute: 'numeric',
     hour12: false,
+    timeZone: 'Asia/Kolkata', // Set the time zone to India Standard Time
   });
 };
-
 const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
