@@ -2,6 +2,16 @@ import Cards from "@/model/Cards";
 import connectDb from "../../middleware/mongoose";
 import Attendance from "@/model/Attendance";
 
+const formatDate = (date) => {
+  return date.toLocaleString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false,
+  });
+};
+
 const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
@@ -33,8 +43,10 @@ const handler = async (req, res) => {
     existingAttendance.Logout = new Date();
     try {
       const updatedAttendance = await existingAttendance.save();
+      const formattedLogoutTime = formatDate(existingAttendance.Logout);
+
       // Handle success, send response, etc.
-      return res.status(200).json({ success: true, msg: "Logout time updated successfully", data: updatedAttendance });
+      return res.status(200).json({ success: true, msg: ("Logout Successful: "+formattedLogoutTime), data: reqCard });
     } catch (error) {
       // Handle error, send appropriate response
       console.error("Error updating attendance:", error);
@@ -52,7 +64,9 @@ const handler = async (req, res) => {
     try {
       const savedAttendance = await newAttendance.save();
       // Handle success, send response, etc.
-      return res.status(200).json({ success: true, msg: "Attendance recorded successfully", data: savedAttendance });
+      const formattedLoginTime = formatDate(newAttendance.Login);
+
+      return res.status(200).json({ success: true, msg: ("Login Successful: "+formattedLoginTime), data: reqCard });
     } catch (error) {
       // Handle error, send appropriate response
       console.error("Error saving attendance:", error);
