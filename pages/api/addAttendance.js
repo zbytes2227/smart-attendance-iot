@@ -46,7 +46,7 @@ const handler = async (req, res) => {
       const formattedLogoutTime = formatDate(existingAttendance.Logout);
 
       // Handle success, send response, etc.
-      return res.status(200).json({ success: true, msg: ("Logout At: "+formattedLogoutTime), data: reqCard });
+      return res.status(200).json({ success: true, msg: ("Logout : "+formattedLogoutTime), data: reqCard });
     } catch (error) {
       // Handle error, send appropriate response
       console.error("Error updating attendance:", error);
@@ -66,7 +66,7 @@ const handler = async (req, res) => {
       // Handle success, send response, etc.
       const formattedLoginTime = formatDate(newAttendance.Login);
 
-      return res.status(200).json({ success: true, msg: ("Login At: "+formattedLoginTime), data: reqCard });
+      return res.status(200).json({ success: true, msg: ("Login : "+formattedLoginTime), data: reqCard });
     } catch (error) {
       // Handle error, send appropriate response
       console.error("Error saving attendance:", error);
