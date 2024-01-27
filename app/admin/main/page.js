@@ -17,7 +17,7 @@ const Page = () => {
   );
   useEffect(() => {
     // Fetch data from the API
-    fetch("http://localhost:3000/api/getCard")
+    fetch("/api/getCard")
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {

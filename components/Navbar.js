@@ -166,7 +166,7 @@ const Navbar = () => {
                 </svg>
                 <span class="flex-1 ms-3 whitespace-nowrap">All Cards</span>
                 <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                  Pro
+                  3
                 </span>
               </a>
             </li>
