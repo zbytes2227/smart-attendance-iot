@@ -100,9 +100,12 @@ const Page = () => {
           name: cardDetails.name,
           class: cardDetails.class,
           contact: cardDetails.contact,
-          login: entry.Login,
-          logout: entry.Logout
+          date: new Date(entry.Login).toLocaleDateString(),
+          login: new Date(entry.Login).toLocaleTimeString(),
+          logout: new Date(entry.Logout).toLocaleTimeString()
         };
+     
+
       }
       // If cardDetails is not found, return null
       return null;
@@ -316,15 +319,15 @@ const Page = () => {
                     <td className="px-6 py-4">{card.class}</td>
                     <td className="px-6 py-4">{card.contact}</td>
                     <td className="px-6 py-4">
-                      {new Date(card.login).toLocaleDateString()}
+                     {card.date}
                     </td>
                     <td className="px-6 py-4">
-                      {new Date(card.login).toLocaleTimeString()}
+                      {/* {new Date(card.login).toLocaleTimeString()} */}
+                      {card.login}
                     </td>
                     <td className="px-6 py-4">
-                      {isValidDate(card.logout)
-                        ? new Date(card.logout).toLocaleTimeString()
-                        : "Pending"}
+                      
+                      {card.logout != "Invalid Date" ? card.logout: "Pending"}
                     </td>
 
 
